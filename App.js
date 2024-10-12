@@ -1,10 +1,21 @@
 // App.js
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './login';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        {/* Definição das telas */}
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
       <View style={styles.card}>
         <Text style={styles.title}><Image
             source={require('./assets/azurion.png')}
@@ -16,6 +27,7 @@ export default function App() {
         <TextInput style={styles.input} placeholder="Confirme a Senha" placeholderTextColor="#777" secureTextEntry={true} />
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Entrar</Text>
+          onPress={() => navigation.navigate('Login')}
         </TouchableOpacity>
         <Text style={styles.loginText}>
           Já possui conta? <Text style={styles.link}>Entrar</Text>
