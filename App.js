@@ -6,7 +6,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Text style={styles.title}>azurion</Text>
+        <Text style={styles.title}><Image
+            source={require('./assets/azurion.png')}
+            style={styles.azurion}
+          /></Text>
         <TextInput style={styles.input} placeholder="Nome" placeholderTextColor="#777" />
         <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#777" keyboardType="email-address" />
         <TextInput style={styles.input} placeholder="Senha" placeholderTextColor="#777" secureTextEntry={true} />
@@ -20,7 +23,7 @@ export default function App() {
         <Text style={styles.divider}>Ou entre com</Text>
         <TouchableOpacity style={styles.googleButton}>
           <Image
-            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_"G"_Logo.svg/512px-Google_"G"_Logo.svg.png' }}
+            source={require('./assets/googles.webp')}
             style={styles.googleIcon}
           />
           <Text style={styles.googleButtonText}>Google</Text>
@@ -37,17 +40,21 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#0f0f17',
+    backgroundColor: '#13191f',
     justifyContent: 'center',
     alignItems: 'center',
   },
   card: {
-    backgroundColor: '#1b1b32',
+    backgroundColor: '#13191f',
     padding: 20,
     borderRadius: 8,
     width: '90%',
     maxWidth: 400,
     alignItems: 'center',
+  },
+  googleIcon: {
+    width: 100,
+    height: 200,
   },
   title: {
     color: '#5ac8fa',
@@ -58,20 +65,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#29293e',
     color: '#fff',
     width: '100%',
-    padding: 10,
+    padding: 15,
     borderRadius: 5,
     marginVertical: 8,
   },
   button: {
-    backgroundColor: '#5ac8fa',
+    backgroundColor: 'transparent',
     padding: 12,
     borderRadius: 5,
+    borderWidth:'1px',
+    borderColor:'#33c4fe',
     marginTop: 10,
     width: '100%',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: '#33c4fe',
     fontWeight: 'bold',
   },
   loginText: {
@@ -82,13 +91,13 @@ const styles = StyleSheet.create({
     color: '#5ac8fa',
   },
   divider: {
-    color: '#a9a9b2',
+    color: '#33c4fe',
     marginVertical: 20,
   },
   googleButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#29293e',
+    backgroundColor: '#13191f',
     padding: 12,
     borderRadius: 5,
     width: '100%',
