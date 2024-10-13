@@ -1,48 +1,64 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+// Registration.js
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-export default function Login({navigation}) {
-  
-    const handleRegister = () => {
-      // Aqui você pode adicionar a lógica de registro, como validação e integração com backend
-      // Após o registro, navegue para a tela de Login ou outra tela desejada
-      navigation.navigate('Registration');
-    };
+export default function Registration({ navigation }) {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmeSenha, setConfirmeSenha] = useState('');
+
+  const handleRegister = () => {
+    // Aqui você pode adicionar a lógica de registro, como validação e integração com backend
+    // Após o registro, navegue para a tela de Login ou outra tela desejada
+    navigation.navigate('Login');
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('./assets/azurion.png')}
-            style={styles.azurion}
-          />
-        </View>
-        
+        <Image
+          source={require('./assets/azurion.png')}
+          style={styles.azurion}
+        />
+        <TextInput 
+          style={styles.input} 
+          placeholder="Nome" 
+          placeholderTextColor="#777" 
+          value={nome} 
+          onChangeText={setNome} 
+        />
         <TextInput 
           style={styles.input} 
           placeholder="Email" 
           placeholderTextColor="#777" 
           keyboardType="email-address" 
-          // value={email} 
-          // onChangeText={setEmail} 
+          value={email} 
+          onChangeText={setEmail} 
         />
         <TextInput 
           style={styles.input} 
           placeholder="Senha" 
           placeholderTextColor="#777" 
           secureTextEntry={true} 
-          // value={senha} 
-          // onChangeText={setSenha} 
+          value={senha} 
+          onChangeText={setSenha} 
         />
-      </View>
-      <TouchableOpacity onPress={handleRegister} style={styles.button}>
-          <Text style={styles.buttonText}>Entrar</Text>
+        <TextInput 
+          style={styles.input} 
+          placeholder="Confirme a Senha" 
+          placeholderTextColor="#777" 
+          secureTextEntry={true} 
+          value={confirmeSenha} 
+          onChangeText={setConfirmeSenha} 
+        />
+        <TouchableOpacity onPress={handleRegister} style={styles.button}>
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
-      <Text style={styles.loginText}>
-          Não possui conta? 
-          <Text style={styles.link} onPress={() => navigation.navigate('Registration')}>
-            {' '}Cadastrar
+        <Text style={styles.loginText}>
+          Já possui conta? 
+          <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
+            {' '}Entrar
           </Text>
         </Text>
         <Text style={styles.divider}>Ou entre com</Text>
@@ -58,6 +74,7 @@ export default function Login({navigation}) {
           <Text style={styles.link}> Termos de Serviço</Text> e 
           <Text style={styles.link}> Acordo de Processamento de Dados</Text>
         </Text>
+      </View>
     </View>
   );
 }
@@ -65,21 +82,9 @@ export default function Login({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // Centraliza verticalmente
-    alignItems: 'center',     // Centraliza horizontalmente
     backgroundColor: '#13191f',
-  },
-  azurion: {
-    width: 170,
-    height: 40,
-    marginBottom: 20
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 10,
-  },
-  imageContainer: {
-    width:'100%'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   card: {
     backgroundColor: '#13191f',
@@ -88,6 +93,16 @@ const styles = StyleSheet.create({
     width: '90%',
     maxWidth: 400,
     alignItems: 'center',
+  },
+  azurion: {
+    width: 140,
+    height: 25,
+    marginBottom: 20,
+  },
+  title: {
+    color: '#5ac8fa',
+    fontSize: 24,
+    marginBottom: 20,
   },
   input: {
     backgroundColor: '#29293e',
@@ -104,18 +119,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#33c4fe',
     marginTop: 10,
-    width: '80%',
-    height:'7%',
+    width: '100%',
     alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent:'center'
   },
   buttonText: {
-    fontFamily: 'Poppins',
     color: '#33c4fe',
     fontWeight: 'bold',
-    fontSize:'16px'
   },
   loginText: {
     color: '#a9a9b2',
@@ -151,6 +160,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 15,
     textAlign: 'center',
-    width:'80%',
   },
 });
