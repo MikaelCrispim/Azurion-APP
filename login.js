@@ -6,7 +6,7 @@ export default function Login({navigation}) {
     const handleRegister = () => {
       // Aqui você pode adicionar a lógica de registro, como validação e integração com backend
       // Após o registro, navegue para a tela de Login ou outra tela desejada
-      navigation.navigate('Registration');
+      navigation.navigate('Welcome');
     };
 
   return (

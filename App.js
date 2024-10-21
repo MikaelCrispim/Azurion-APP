@@ -1,25 +1,45 @@
 // App.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Registration from './Registration'; // Tela de Cadastro
-import Login from './login'; // Tela de Login
+// import Registration from './Registration'; // Tela de Cadastro
+// import Login from './login'; // Tela de Login
+import Welcome from './welcome'; // Tela de Bem-Vindo(a)
 import { StatusBar } from 'react-native';
 import * as Font from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { MaterialIcons } from '@expo/vector-icons';
 
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
-    'Poppins': require('./assets/fonts/Poppins-Regular.ttf'), // Substitua pelo nome exato da sua fonte
+    'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
+    'MaterialIcons': require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf'),
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Mantenha a tela de splash visível enquanto as fontes são carregadas
+        await SplashScreen.preventAutoHideAsync();
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Após o carregamento dos recursos, esconda a splash screen
+        await SplashScreen.hideAsync();
+      }
+    }
+
+    prepare();
+  }, []);
+
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
 
   return (
     <>
@@ -31,7 +51,7 @@ export default function App() {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Registration">
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name="Registration" 
           component={Registration} 
           options={{ headerShown: false }}
@@ -39,6 +59,11 @@ export default function App() {
         <Stack.Screen 
           name="Login" 
           component={Login} 
+          options={{ headerShown: false }}
+        /> */}
+        <Stack.Screen 
+          name="Welcome" 
+          component={Welcome} 
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
