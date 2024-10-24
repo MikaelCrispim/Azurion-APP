@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import Registration from './Registration'; // Tela de Cadastro
-// import Login from './login'; // Tela de Login
+import Registration from './Registration'; // Tela de Cadastro
+import Login from './login'; // Tela de Login
 import Welcome from './welcome'; // Tela de Bem-Vindo(a)
 import { StatusBar } from 'react-native';
 import * as Font from 'expo-font';
@@ -37,9 +37,6 @@ export default function App() {
     prepare();
   }, []);
 
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // }
 
   return (
     <>
@@ -51,7 +48,7 @@ export default function App() {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Registration">
-        {/* <Stack.Screen 
+        <Stack.Screen 
           name="Registration" 
           component={Registration} 
           options={{ headerShown: false }}
@@ -60,7 +57,7 @@ export default function App() {
           name="Login" 
           component={Login} 
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen 
           name="Welcome" 
           component={Welcome} 

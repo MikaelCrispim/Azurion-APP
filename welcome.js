@@ -1,11 +1,11 @@
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Icon} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 export default function Welcome({navigation}){
 
     const handleRegister = () => {
-
+        // Adicione sua lógica aqui
     };
 
     const backRegister = () => {
@@ -18,7 +18,8 @@ export default function Welcome({navigation}){
                 
                 <View style={styles.voltar}>
                     <TouchableOpacity onPress={backRegister} style={styles.back}>
-                    <Icon name="arrow-back" size={30} color="#000" />
+                        {/* Use o MaterialIcons em vez de Icon */}
+                        <MaterialIcons name="arrow-back" size={30} color="#666" />
                     </TouchableOpacity>                
                 </View>
 
@@ -29,13 +30,12 @@ export default function Welcome({navigation}){
                     />
                 </View>
 
-
                 <View style={styles.espacoTexto}>
-                    <Text style={styles.user}>Bem Vindo(a) Michele</Text>
+                    <Text style={styles.user}>Bem Vindo(a), Michele!</Text>
                     <Text style={styles.texto}>
                         "Para personalizar sua experiência de
                         aprendizado, vamos começar com
-                        um breve quiz cobre você. Pronto
+                        um breve quiz sobre você. Pronto
                         para nos contar um pouco mais?"
                     </Text>
                 </View>
@@ -44,68 +44,71 @@ export default function Welcome({navigation}){
                     <Text style={styles.buttonText}>Vamos Começar</Text>
                 </TouchableOpacity>
             </View>
-
-            {/* <View style={styles.card3}>
-                
-            </View>
-
-            <View style={styles.card4}>
-                
-            </View> */}
         </View>
-    )
+    );
 };
 
+// Definindo o StyleSheet
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#172128',
+        backgroundColor: '#13191f',
+    },
+    card: {
+        width: '90%',
+        padding: 20,
+        backgroundColor: '#13191f',
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        elevation: 5,
     },
     voltar: {
-        width: "100%",
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start'
+        alignSelf: 'flex-start',
+        marginBottom: 20,
     },
-    card:{
+    imageEstudante: {
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    estudante: {
+        width: 380,
+        height: 430,
+    },
+    espacoTexto: {
+        marginBottom: 20,
         alignItems: 'center',
     },
     user: {
-        width: '100%',
-        fontSize: '25px',
-        fontFamily: 'Poppins',
-        color: '#33c4fe',
-        margin: 10,
-    },
-    btnStart: {
-        backgroundColor: '#33c4fe',
-        padding: 12,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#33c4fe',
-        marginTop: 10,
-        width: '100%',
-        alignItems: 'center',
-    },
-    buttonText: {
-        fontFamily: 'Poppins',
-        color: '#000',
+        fontSize: 24,
         fontWeight: 'bold',
-        fontSize:'16px'
-    },
-    buttonBack: {
-        color: 'white',
-    },
-    espacoTexto: {
-        display: 'flex',
-        textAlign: 'center',
-        width: '50%',
+        color: '#33c4fe',
+        fontFamily: 'Poppins',
+        marginBottom: 10,
     },
     texto: {
+        width: '90%',
+        fontSize: 14,
+        textAlign: 'center',
+        color: '#ddd',
         fontFamily: 'Poppins',
-        color: 'white',
     },
-})
+    btnStart: {
+        width: '70%',
+        backgroundColor: '#33c4fe',
+        padding: 11,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginLeft: 50,
+    },
+    buttonText: {
+        color: '#13191f',
+        fontSize: 15,
+        fontFamily: 'Poppins'
+    },
+});
+
