@@ -47,23 +47,23 @@ export default function App() {
       />
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Registration">
-        <Stack.Screen 
-          name="Registration" 
-          component={Registration} 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
-          name="Login" 
-          component={Login} 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
-          name="Welcome" 
-          component={Welcome} 
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen 
+            name="Registration" 
+            component={Registration} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+              name="Login" 
+              component={Login} 
+              options={{ headerShown: false }}
+            />
+          <Stack.Screen 
+              name="Welcome" 
+              component={Welcome} 
+              options={{ headerShown: false }}
+            />
+        </Stack.Navigator>
     </NavigationContainer>
     </>
   );

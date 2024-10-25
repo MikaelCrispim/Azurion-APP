@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-export default function Login({navigation}) {
+export default function Login({navigation, route}) {
+
+    const {nome} = route.params;
   
     const handleRegister = () => {
       // Aqui você pode adicionar a lógica de registro, como validação e integração com backend
       // Após o registro, navegue para a tela de Login ou outra tela desejada
-      navigation.navigate('Welcome');
+      navigation.navigate('Welcome', {nome});
     };
 
   return (

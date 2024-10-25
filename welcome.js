@@ -2,14 +2,16 @@ import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-export default function Welcome({navigation}){
+export default function Welcome({navigation, route}){
+
+    const {nome} = route.params || {};
 
     const handleRegister = () => {
         // Adicione sua lógica aqui
     };
 
-    const backRegister = () => {
-        navigation.navigate('Login');
+    const backLogin = () => {
+        navigation.navigate('Login', { nome: route.params.nome });
     };
 
     return (
@@ -17,7 +19,7 @@ export default function Welcome({navigation}){
             <View style={styles.card}>
                 
                 <View style={styles.voltar}>
-                    <TouchableOpacity onPress={backRegister} style={styles.back}>
+                    <TouchableOpacity onPress={backLogin} style={styles.back}>
                         {/* Use o MaterialIcons em vez de Icon */}
                         <MaterialIcons name="arrow-back" size={30} color="#666" />
                     </TouchableOpacity>                
@@ -31,7 +33,7 @@ export default function Welcome({navigation}){
                 </View>
 
                 <View style={styles.espacoTexto}>
-                    <Text style={styles.user}>Bem Vindo(a), Michele!</Text>
+                    <Text style={styles.user}>Bem Vindo(a), {nome}!</Text>
                     <Text style={styles.texto}>
                         "Para personalizar sua experiência de
                         aprendizado, vamos começar com
