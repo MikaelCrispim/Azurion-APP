@@ -1,5 +1,7 @@
 {
   "expo": {
+    "entryPoint": "./node_modules/expo/AppEntry.js",
+    "newArchEnabled": true,
     "name": "Azurion-APP",
     "slug": "Azurion-APP",
     "version": "1.0.0",

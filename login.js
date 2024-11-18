@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'reac
 
 export default function Login({navigation, route}) {
 
-    const {nome} = route.params;
+  const { nome } = route.params || {};;
   
     const handleRegister = () => {
       // Aqui você pode adicionar a lógica de registro, como validação e integração com backend
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     color: '#33c4fe',
     fontWeight: 'bold',
-    fontSize:'16px'
+    fontSize:16
   },
   loginText: {
     color: '#a9a9b2',
