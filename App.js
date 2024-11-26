@@ -11,6 +11,8 @@ import * as Font from 'expo-font';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { MaterialIcons } from '@expo/vector-icons';
+import question from './questions';
+import Questions from './questions';
 
 
 const Stack = createNativeStackNavigator();
@@ -63,6 +65,11 @@ export default function App() {
               component={Welcome} 
               options={{ headerShown: false }}
             />
+          <Stack.Screen 
+              name="Questions" 
+              component={Questions} 
+              options={{ headerShown: false }}
+            />  
         </Stack.Navigator>
     </NavigationContainer>
     </>

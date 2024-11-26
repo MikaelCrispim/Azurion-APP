@@ -13,19 +13,19 @@ export default function Welcome({navigation, route}){
           id: 1,
           image: require('./assets/estudante.png'),
           title: 'Bem-vindo ao App!',
-          description: 'Aqui você aprenderá como otimizar seus estudos.',
+          description: 'Nosso app foi desenvolvido para ajudar você a estudar de forma mais eficiente.',
         },
         {
           id: 2,
-          image: require('./assets/estudante.png'),
+          image: require('./assets/estudante2.png'),
           title: 'Aproveite os recursos!',
-          description: 'Explore as ferramentas exclusivas que oferecemos.',
+          description: 'Com sessões personalizadas, você poderá focar no que mais importa e melhorar seu desempenho.',
         },
         {
           id: 3,
-          image: require('./assets/estudante.png'),
+          image: require('./assets/estudante3.png'),
           title: 'Comece agora!',
-          description: 'Inicie sua jornada de aprendizado e conquiste seus objetivos.',
+          description: 'Estamos quase lá. Responda algumas perguntas rápidas sobre suas dificuldades e preferências para que possamos te ajudar da melhor forma.',
         },
       ];
     const scrollViewRef = useRef(null);
@@ -36,29 +36,20 @@ export default function Welcome({navigation, route}){
     const page = Math.floor(offsetX / width); // Calcula a página atual
     setCurrentPage(page);
     };
-
     const handleNextPage = () => {
         if (currentPage < pages.length - 1) {
           scrollViewRef.current.scrollTo({ x: (currentPage + 1) * width, animated: true });
           setCurrentPage(currentPage + 1);
-        } 
+        }
         if (currentPage == 2){
-            navigation.navigate('Login'); //colocar a prox pagina aqui
+            navigation.navigate('Questions'); //colocar a prox pagina aqui
         }
       };
     
-    const handlePreviousPage = () => {
-        if (currentPage > 0) {
-          scrollViewRef.current.scrollTo({ x: (currentPage - 1) * width, animated: true });
-          setCurrentPage(currentPage - 1);
-        }
-      };
+    
+      
     
     const {nome} = route.params || {};
-
-    const handleRegister = () => {
-        // Adicione sua lógica aqui
-    };
 
     const backLogin = () => {
         navigation.navigate('Login', { nome: route.params.nome });
@@ -75,7 +66,6 @@ export default function Welcome({navigation, route}){
                 
                 <View style={styles.voltar}>
                     <TouchableOpacity onPress={backLogin} style={styles.back}>
-                        {/* Use o MaterialIcons em vez de Icon */}
                         <MaterialIcons name="arrow-back" size={30} color="#666" />
                     </TouchableOpacity>                
                 </View>
@@ -85,21 +75,7 @@ export default function Welcome({navigation, route}){
                     Nosso app foi desenvolvido para ajudar você a estudar de forma mais eficiente.
                     </Text>
                 </View>
-                {/* <View style={styles.imageEstudante}>
-                    <Image
-                        source={require('./assets/estudante.png')}
-                        style={styles.estudante}
-                    />
-                </View>
-
-                <View style={styles.espacoTexto}>
-                    <Text style={styles.user}>Bem Vindo(a), {nome}!</Text>
-                    <Text style={styles.texto}>
-                    Nosso app foi desenvolvido para ajudar você a estudar de forma mais eficiente.
-                    </Text>
-                </View> */}
-
-                {/* <View style={styles.displayHB}>  */}
+               
                 <ScrollView
                 ref={scrollViewRef}
                 horizontal
@@ -132,7 +108,7 @@ export default function Welcome({navigation, route}){
                     </View>
 
                     <TouchableOpacity onPress={handleNextPage} style={styles.btnStart}>
-                        <Text style={styles.buttonText}>Vamos Começar</Text>
+                        <Text style={styles.buttonText}>Vamos Começar!</Text>
                     </TouchableOpacity>
                     
                     
@@ -169,9 +145,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 20,
     },
-    estudante: {
-        width: 380,
-        height: 430,
+    pageImage: {
+        width: 280,
+        height: 330,
     },
     espacoTexto: {
         marginBottom: 20,
